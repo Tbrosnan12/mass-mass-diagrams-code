@@ -10,7 +10,7 @@ import numpy as np
 from numpy import arange
 from numpy import meshgrid
 import sys
-plt.rcParams['figure.dpi']=200
+plt.rcParams['figure.dpi']=180
 
 Ms=1.989e30
 c=3e8
@@ -85,6 +85,8 @@ mp, mc = meshgrid(xrange,yrange)
 fig, ax = plt.subplots()       
 plt.xlim(0,3)
 plt.ylim(0,3)
+plt.xlabel("Pulsar mass")
+plt.ylabel("Companion mass")
 
 P1=ax.contour(mp, mc, r_(mp,mc)-r, [0],colors='orange')
 P2=ax.contour(mp, mc, s_(mp,mc)-s, [0],colors='green')
