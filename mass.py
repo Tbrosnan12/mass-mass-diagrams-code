@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from numpy import arange
 from numpy import meshgrid
-import matplotlib.patches as pct
 import sys
 plt.rcParams['figure.dpi']=200
 
