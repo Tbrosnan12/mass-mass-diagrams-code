@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from numpy import arange
 from numpy import meshgrid
+import matplotlib.patches as pct
 import sys
 plt.rcParams['figure.dpi']=200
 
@@ -32,14 +33,14 @@ def Find(param):       # fucntion that searches file for value of parameter
             
 print(Find('F0'))
 
-P=0.19765096149    # days
-Pdot=-3.8e-13      #unitless
-wdot=5.3105        # degrees/year
-e=0.171875         #unitless
-gamma= 7.9e-4      #seconds 
-x=1.85891          #light-seconds
-s=(2*.82)/(.82**2+1) #unitless
-r=(2.7e-6)/(.82**3)  #seconds*M_sun
+P=0.19765096149              # days
+Pdot=-3.8e-13                #unitless
+wdot=5.3105                  # degrees/year
+e=0.171875                   #unitless
+gamma= 7.9e-4                #seconds 
+x=1.85891                    #light-seconds
+s=(2*.82)/(.82**2+1)         #unitless
+r=(2.7e-6)/(.82**3)          #seconds*M_sun
 
 Ts=G*Ms/c**3
 f=(1+(73/24)*e**2+(37/96)*e**4)/((1-e**2)**(7/2))
@@ -73,28 +74,34 @@ def r_(mp,mc):
 
 
 
-
 delta = 0.001
 xrange = arange(0.01, 3.0, delta)
 yrange = arange(0.01, 3.0, delta)
 mp, mc = meshgrid(xrange,yrange)
 
 
-Mp=[]
-W=[]
-Mc=[]
-for i in np.arange(0.01,3,0.01):
-    Mp.append(i)
-    Mc.append(1)
-    W.append(w_dot(i,1))
 
 
 #plt.plot(Mp,W)
-plt.figure()        
+fig, ax = plt.subplots()       
+plt.xlim(0,3)
+plt.ylim(0,3)
 
-plt.contour(mp, mc, r_(mp,mc)-r, [0],colors='orange')
-plt.contour(mp, mc, s_(mp,mc)-s, [0],colors='green')
-plt.contour(mp, mc, gamma_(mp,mc)-gamma, [0],colors='purple')
-plt.contour(mp, mc, P_dot(mp,mc)-Pdot, [0],colors='blue')
-plt.contour(mp, mc, w_dot(mp,mc)-wdot, [0],colors='red')
+P1=ax.contour(mp, mc, r_(mp,mc)-r, [0],colors='orange')
+P2=ax.contour(mp, mc, s_(mp,mc)-s, [0],colors='green')
+P3=ax.contour(mp, mc, gamma_(mp,mc)-gamma, [0],colors='purple')    #contour plots of the curves
+P4=ax.contour(mp, mc, P_dot(mp,mc)-Pdot, [0],colors='blue')
+P5=ax.contour(mp, mc, w_dot(mp,mc)-wdot, [0],colors='red')
+
+plt.title('Mass-mass diagram for ' + Find('PSRJ'))    #title with pulsar name 
+
+h1,_ = P1.legend_elements()
+h2,_ = P2.legend_elements()
+h3,_ = P3.legend_elements()
+h4,_ = P4.legend_elements()
+h5,_ = P5.legend_elements()
+
+ax.legend([h1[0], h2[0], h3[0], h4[0], h5[0]], ['Shapiro delay', 'sin(i)','Einstein delay','Period dot',
+           'omega dot']
+)  
 plt.show()
