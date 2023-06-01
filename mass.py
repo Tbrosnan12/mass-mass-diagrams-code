@@ -102,7 +102,7 @@ h3,_ = P3.legend_elements()
 h4,_ = P4.legend_elements()
 h5,_ = P5.legend_elements()
 
-ax.legend([h1[0], h2[0], h3[0], h4[0], h5[0]], ['Shapiro delay', 'sin(i)','Einstein delay','Period dot',
+ax.legend([h1[0], h2[0], h3[0], h4[0], h5[0]], ['Shapiro range', 'sin(i)','Einstein delay','Period dot',
            'omega dot']
 )  
 plt.show()
