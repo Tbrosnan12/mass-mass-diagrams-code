@@ -17,7 +17,7 @@ c=3e8
 G=6.6743e-11
 
 
-def Find(param):       # fucntion that searches file for value of parameter
+def Find(param):       # fucntion that searches listed file for value of parameter
 
     with open(sys.argv[1], 'r') as fp:
         lines = fp.readlines()
