@@ -16,9 +16,10 @@ Ms=1.989e30
 c=3e8
 G=6.6743e-11
 
+P_dot_e=1e-14
 
-def Find(param):       # fucntion that searches listed file for value of parameter
-
+def Find(param,n):       # fucntion that searches listed file for value of parameter
+                                              # n gives the nth number after the parameter name
     with open(sys.argv[1], 'r') as fp:
         lines = fp.readlines()
         for line in lines:    
@@ -26,22 +27,26 @@ def Find(param):       # fucntion that searches listed file for value of paramet
                 l= lines[lines.index(line)]
                 l=l.strip()
                 l=l.split(" ")
+                k=0
+                for i in np.arange(0,len(l),1):                    
+                    if l[i-k] =="":
+                        del l[i-k]
+                        k=k+1
                 for i in np.arange(0,len(l),1):
-                    if l[i] !="" and i>=1:
-                        return l[i]
-            
+                     if i>=n:
+                       return l[i]
 
 
-P=float(Find('PB') or 0)                                  # days
-Pdot=float(Find('PBDOT') or 0)                          #unitless
-wdot=float(Find('OMDOT') or 0)                              # degrees/year
-e=float(Find('ECC') or 0)                                #unitless
-gamma= float(Find('GAMMA') or 0)                           #seconds 
-x=float(Find('XDIST') or 0)                                  #light-seconds
-s=float(Find('SINI') or 0)                                 #unitless
-r=float(Find('SHAPMAX') or 0)                           #seconds*M_sun
+P=float(Find('PB',1) or 0)                                  # days
+Pdot=float(Find('PBDOT',1) or 0)                          #unitless
+wdot=float(Find('OMDOT',1) or 0)                              # degrees/year
+e=float(Find('ECC',1) or 0)                                #unitless
+gamma= float(Find('GAMMA',1) or 0)                           #seconds 
+x=float(Find('XDIST',1) or 0)                                  #light-seconds
+s=float(Find('SINI',1) or 0)                                 #unitless
+r=float(Find('SHAPMAX',1) or 0)                           #seconds*M_sun
 
-print(float(Find('SINI') or 0),x )
+print(float(Find('SINI',1) or 0),x )
 
 Ts=G*Ms/c**3
 f=(1+(73/24)*e**2+(37/96)*e**4)/((1-e**2)**(7/2))
@@ -90,13 +95,13 @@ plt.ylim(0,3)
 plt.xlabel("Pulsar mass")
 plt.ylabel("Companion mass")
 
-P1=ax.contour(mp, mc, r_(mp,mc)-r, [0],colors='orange')
+P1=ax.contourf(mp, mc, r_(mp,mc)-r, [0,0.000001],colors='orange')
 P2=ax.contour(mp, mc, s_(mp,mc)-s, [0],colors='green')
 P3=ax.contour(mp, mc, gamma_(mp,mc)-gamma, [0],colors='purple')    #contour plots of the curves
-P4=ax.contour(mp, mc, P_dot(mp,mc)-Pdot, [0],colors='blue')
+P4=ax.contourf(mp, mc, P_dot(mp,mc)-Pdot, [-P_dot_e,P_dot_e],colors='blue')
 P5=ax.contour(mp, mc, w_dot(mp,mc)-wdot, [0],colors='red')
 
-plt.title('Mass-mass diagram for ' + Find('PSRJ'))    #title with pulsar name 
+plt.title('Mass-mass diagram for ' + Find('PSRJ',1))    #title with pulsar name 
 
 h1,_ = P1.legend_elements()
 h2,_ = P2.legend_elements()
