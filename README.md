@@ -2,4 +2,4 @@ This code will take in a pulsar paramter file (.par) and create a mass-mass diag
 
 The code is called by running: python mass.py parfile.par
 
-(Not fully functioning yet)
+The par file will need the specific parameters to create teh graph
