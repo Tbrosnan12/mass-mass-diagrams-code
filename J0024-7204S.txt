@@ -1,0 +1,67 @@
+PSRJ            J0024-7204S
+NAME            J0024-7204S
+RAJ             00:24:03.9794                 1.000e-04
+DECJ            -72:04:42.3530                4.000e-04
+ELONG           311.26
+ELAT            -62.35
+DM              24.376                        4.000e-03
+PEPOCH          51600
+F0              353.306209385356              9.000e-12
+F1              15.0466E-15                   1.000e-19
+P0              0.00283040595787912           8.000e-17
+P1              -1.205413E-19                 9.000e-25
+DIST_DM         2.542
+DIST_DM1        1.042
+SURVEY          pksgc
+PMRA            5.252                         2.100e-02
+PMDEC           -2.551                        2.100e-02
+POSEPOCH        51600
+DMEPOCH         51600.00
+F2              -7.8E-27                      8.000e-28
+BINARY          ELL1
+PB              1.2017242354                  6.000e-10
+ECC             0.000398                      3.000e-06
+A1              0.7662686                     8.000e-07
+OM              13.2                          5.000e-03
+OMDOT           0.331                         7.500e-02
+TASC            51600.6250241                 2.000e-07
+EPS1            9.1E-5                        3.000e-06
+EPS2            3.87E-4                       2.000e-06
+CLK             UTC(NIST)
+DIST_A          4.521                         3.100e-02
+ASSOC           GC:47Tuc(NGC104),XRS:[bhc+17],
+BINCOMP         He[rvh+15]
+EPHEM           DE421
+PBDOT           -4.9E-12                      4.000e-13
+PX              0.232                         9.000e-03
+FB0             9.631222982E-6                5.000e-15
+FB1             4.5E-22                       4.000e-23
+DATE            2000
+DIST            4.521
+DIST1           4.521
+PMERR_PA        -53.697
+P1_I            -1.22e-19
+AGE_I           -3.69e+08
+BSURF_I         -nan
+EDOT_I          -2.12e+35
+PMTOT           5.84                          3.000e-02
+VTRANS          125.15
+RAJD            6.0165808                     4.167e-07
+DECJD           -72.07843139                  1.111e-07
+OSURVEY         000000200000
+MASSFN            0.000335
+MINMASS           0.088458
+MEDMASS           0.102821
+DMSINB          -17.20
+GL              305.898
+GB              -44.892
+XX              -2.595
+YY              6.622
+ZZ              -3.191
+PML             -1.41                         3.000e-02
+PMB             3.03                          3.000e-02
+M2              0.175                         2.500e-02
+UPRMASS           0.213300
+MINOMDOT             0.187
+UNITS           TDB
+
