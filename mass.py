@@ -10,13 +10,12 @@ import numpy as np
 from numpy import arange
 from numpy import meshgrid
 import sys
-plt.rcParams['figure.dpi']=200
+plt.rcParams['figure.dpi']=200  #sets the resoloution 
 
 Ms=1.989e30
 c=3e8
 G=6.6743e-11
 
-P_dot_e=1e-14
 
 def is_number(s):
     try:
@@ -61,7 +60,7 @@ print(P,Pdot,wdot,e,gamma,x,s,r)
 
 Ts=G*Ms/c**3
 f=(1+(73/24)*e**2+(37/96)*e**4)/((1-e**2)**(7/2))
-print(f)
+
 
 def P_dot(mp,mc):
     
@@ -97,7 +96,7 @@ yrange = arange(0.01, 3.0, delta)
 mp, mc = meshgrid(xrange,yrange)
 
 
-
+'''
 Mp=[]
 Mc=[]
 S=[]
@@ -105,11 +104,11 @@ R=[]
 for i in np.arange(0.01,3,0.01):
  Mp.append(i)
  Mc.append(1)
- S.append(w_dot(i,1))
+ S.append(w_dot(i,1))       #stuff for debugging
  R.append(P_dot(i,1))
 plt.plot(Mp,S)
 plt.figure()
-plt.plot(Mp,R)
+plt.plot(Mp,R)'''
 
 fig, ax = plt.subplots()       
 plt.xlim(0,3)
