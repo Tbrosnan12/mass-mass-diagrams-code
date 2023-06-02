@@ -1,0 +1,68 @@
+PSRJ            J0045-7319
+NAME            J0045-7319
+RAJ             00:45:35.16                   7.000e-02
+DECJ            -73:19:03.0                   2.000e-01
+ELONG           310.54
+ELAT            -64.35
+DM              104.6                         4.000e-01
+PEPOCH          49144.00
+F0              1.07959193868                 4.000e-11
+F1              -5.2019E-15                   1.100e-18
+P0              0.92627590497                 3.000e-11
+P1              4.4632E-15                    9.000e-19
+DIST_DM         58.705
+DIST_DM1        +36.12
+SURVEY          misc
+S400            1
+S600            1.0                           1.000e-01
+S1400           0.25                          1.000e-02
+W50             20
+W10             220
+POSEPOCH        49144.00
+DMEPOCH         49144.00
+F2              8.2E-25                       5.000e-26
+BINARY          BT
+PB              51.169451                     5.000e-06
+ECC             0.807949                      3.000e-06
+A1              174.2576                      7.000e-04
+T0              49169.21361                   3.000e-05
+OM              115.2540                      5.000e-04
+OMDOT           0.0259                        5.000e-04
+DIST_AMN        56.2
+DIST_AMX        63.5
+DIST_A          59.7
+ASSOC           EXGAL:SMC
+BINCOMP         MS[bbs+95]
+AGE             3.29e+06
+PBDOT           -3.03E-7                      9.000e-09
+RM              -25                           3.000e+00
+A1DOT           1.17E-15                      2.000e-17
+FB0             2.2619109E-7                  3.000e-14
+FB1             1.55E-20                      5.000e-22
+DATE            1991
+DIST            59.700
+DIST1           59.700
+PMERR_PA        -55.094
+EDOTD2          6.2e+28
+R_LUM           3564.09
+R_LUM14         891.02
+BSURF           2.06e+12
+B_LC            2.43e+01
+SI414           1.11
+EDOT            2.2e+32
+RAJD            11.3965                       2.917e-04
+DECJD           -73.31750                     5.556e-05
+OSURVEY         000000400000
+MASSFN            2.169883
+MINMASS           3.921190
+MEDMASS           5.271109
+DMSINB          -72.40
+GL              303.514
+GB              -43.804
+XX              -35.923
+YY              -15.289
+ZZ              -41.324
+UPRMASS          28.276157
+MINOMDOT           0.00246
+EPHVER          2
+UNITS           TDB
