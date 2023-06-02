@@ -39,13 +39,13 @@ def Find(param,n):       # fucntion that searches listed file for value of param
 # pulling parameters from file , first element is the value and second is the erorr
 
 P=float(Find('PB',1) or 0)                                                             # days
-Pdot=[float(Find('PBDOT',1) or 0),float(Find('PBDOT',3) or 0)]                          #unitless
-wdot=[float(Find('OMDOT',1) or 0) ,float(Find('OMDOT',3) or 0)]                      # degrees/year
+Pdot=[float(Find('PBDOT',1) or 0),float(Find('PBDOT',2) or 0)]                          #unitless
+wdot=[float(Find('OMDOT',1) or 0) ,float(Find('OMDOT',2) or 0)]                      # degrees/year
 e=float(Find('ECC',1) or 0)                                #unitless
-gamma= [float(Find('GAMMA',1) or 0),float(Find('GAMMA',3) or 0)]                      #seconds 
-x=float(Find('XDIST',1) or 0)                                #light-seconds
-s=[float(Find('SINI',1) or 0) ,float(Find('SINI',3) or 0) ]                               #unitless
-r=[float(Find('SHAPMAX',1) or 0) ,float(Find('SHAPMAX',3) or 0) ]                          #seconds*M_sun
+gamma= [float(Find('GAMMA',1) or 0),float(Find('GAMMA',2) or 0)]                      #seconds 
+x=float(Find('A1',1) or 0)                                #light-seconds
+s=[float(Find('SINI',1) or 0) ,float(Find('SINI',2) or 0) ]                               #unitless
+r=[float(Find('SHAPMAX',1) or 0) ,float(Find('SHAPMAX',2) or 0) ]                          #seconds*M_sun
 
 
 
