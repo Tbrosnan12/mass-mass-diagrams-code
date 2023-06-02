@@ -44,7 +44,8 @@ def Find(param,n):       # fucntion that searches listed file for value of param
                            return float(l[i])
                          else: return l[i]
         return 0
-# pulling parameters from file , first element is the value and second is the erorr
+    
+# pulling parameters from file , first element is the value and second is the error
 
 P=Find('PB',1)                                                        # days
 Pdot=[Find('PBDOT',1),Find('PBDOT',2)]                          #unitless
@@ -57,6 +58,9 @@ r=[Find('SHAPMAX',1) ,Find('SHAPMAX',2) ]                          #seconds*M_su
 
 print(P,Pdot,wdot,e,gamma,x,s,r)
 
+
+if e==0:
+    print('Warning: eccentricity cannot be 0')
 
 Ts=G*Ms/c**3
 f=(1+(73/24)*e**2+(37/96)*e**4)/((1-e**2)**(7/2))
@@ -141,6 +145,7 @@ if wdot[1] != 0:
  P5=ax.contourf(mp, mc, w_dot(mp,mc)-wdot[0], [-wdot[1],wdot[1]],colors='red',alpha=0.5)
 else:
     P5=ax.contour(mp, mc, w_dot(mp,mc)-wdot[0], [0],colors='red',alpha=0.5)
+
 
 plt.title('Mass-mass diagram for ' + Find('PSRJ',1))    #title with pulsar name 
 
