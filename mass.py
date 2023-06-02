@@ -18,6 +18,13 @@ G=6.6743e-11
 
 P_dot_e=1e-14
 
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
 def Find(param,n):       # fucntion that searches listed file for value of parameter
                                               # n gives the nth number after the parameter name
     with open(sys.argv[1], 'r') as fp:
@@ -34,25 +41,27 @@ def Find(param,n):       # fucntion that searches listed file for value of param
                         k=k+1
                 for i in np.arange(0,len(l),1):
                      if i>=n:
-                       return l[i]
-
+                         if is_number(l[i]):
+                           return float(l[i])
+                         else: return l[i]
+        return 0
 # pulling parameters from file , first element is the value and second is the erorr
 
-P=float(Find('PB',1) or 0)                                                             # days
-Pdot=[float(Find('PBDOT',1) or 0),float(Find('PBDOT',2) or 0)]                          #unitless
-wdot=[float(Find('OMDOT',1) or 0) ,float(Find('OMDOT',2) or 0)]                      # degrees/year
-e=float(Find('ECC',1) or 0)                                #unitless
-gamma= [float(Find('GAMMA',1) or 0),float(Find('GAMMA',2) or 0)]                      #seconds 
-x=float(Find('A1',1) or 0)                                #light-seconds
-s=[float(Find('SINI',1) or 0) ,float(Find('SINI',2) or 0) ]                               #unitless
-r=[float(Find('SHAPMAX',1) or 0) ,float(Find('SHAPMAX',2) or 0) ]                          #seconds*M_sun
+P=Find('PB',1)                                                        # days
+Pdot=[Find('PBDOT',1),Find('PBDOT',2)]                          #unitless
+wdot=[Find('OMDOT',1) ,Find('OMDOT',2)]                      # degrees/year
+e=Find('ECC',1)                                           #unitless
+gamma= [Find('GAMMA',1),Find('GAMMA',2)]                      #seconds 
+x=Find('A1',1)                                               #light-seconds
+s=[Find('SINI',1) ,Find('SINI',2)]                               #unitless
+r=[Find('SHAPMAX',1) ,Find('SHAPMAX',2) ]                          #seconds*M_sun
 
-
+print(P,Pdot,wdot,e,gamma,x,s,r)
 
 
 Ts=G*Ms/c**3
 f=(1+(73/24)*e**2+(37/96)*e**4)/((1-e**2)**(7/2))
-
+print(f)
 
 def P_dot(mp,mc):
     
@@ -89,21 +98,50 @@ mp, mc = meshgrid(xrange,yrange)
 
 
 
-
+Mp=[]
+Mc=[]
+S=[]
+R=[]
+for i in np.arange(0.01,3,0.01):
+ Mp.append(i)
+ Mc.append(1)
+ S.append(w_dot(i,1))
+ R.append(P_dot(i,1))
+plt.plot(Mp,S)
+plt.figure()
+plt.plot(Mp,R)
 
 fig, ax = plt.subplots()       
 plt.xlim(0,3)
 plt.ylim(0,3)
 plt.xlabel("Pulsar mass")
-plt.ylabel("Companion mass")
+plt.ylabel("Companion mass") 
 
 #contour plots of the curves, width of the curves is accounted for by the error of the measured parameters
+# If the error is 0 just a curve is plotted
 
-P1=ax.contourf(mp, mc, r_(mp,mc)-r[0], [-r[1],r[1]],colors='orange',alpha=0.5)
-P2=ax.contourf(mp, mc, s_(mp,mc)-s[0], [-s[1],s[1]],colors='green',alpha=0.5)
-P3=ax.contourf(mp, mc, gamma_(mp,mc)-gamma[0], [-gamma[1],gamma[1]],colors='purple',alpha=0.5)    
-P4=ax.contourf(mp, mc, P_dot(mp,mc)-Pdot[0], [-Pdot[1],Pdot[1]],colors='blue',alpha=0.5)
-P5=ax.contourf(mp, mc, w_dot(mp,mc)-wdot[0], [-wdot[1],wdot[1]],colors='red',alpha=0.5)
+
+
+if r[1]!= 0:
+ P1=ax.contourf(mp, mc, r_(mp,mc)-r[0], [-r[1],r[1]],colors='orange',alpha=0.5)
+else:
+    P1=ax.contour(mp, mc, r_(mp,mc)-r[0], [0],colors='orange',alpha=0.5)
+if s[1] != 0:
+ P2=ax.contourf(mp, mc, s_(mp,mc)-s[0], [-s[1],s[1]],colors='green',alpha=0.5)
+else:
+    P2=ax.contour(mp, mc, s_(mp,mc)-s[0], [0],colors='green',alpha=0.5)
+if gamma[1] != 0:
+ P3=ax.contourf(mp, mc, gamma_(mp,mc)-gamma[0], [-gamma[1],gamma[1]],colors='purple',alpha=0.5)   
+else:
+   P3=ax.contour(mp, mc, gamma_(mp,mc)-gamma[0], [0],colors='purple',alpha=0.5)
+if Pdot[1] != 0: 
+ P4=ax.contourf(mp, mc, P_dot(mp,mc)-Pdot[0], [-Pdot[1],Pdot[1]],colors='blue',alpha=0.5)
+else:
+   P4=ax.contour(mp, mc, P_dot(mp,mc)-Pdot[0], [0],colors='blue',alpha=0.5)
+if wdot[1] != 0:
+ P5=ax.contourf(mp, mc, w_dot(mp,mc)-wdot[0], [-wdot[1],wdot[1]],colors='red',alpha=0.5)
+else:
+    P5=ax.contour(mp, mc, w_dot(mp,mc)-wdot[0], [0],colors='red',alpha=0.5)
 
 plt.title('Mass-mass diagram for ' + Find('PSRJ',1))    #title with pulsar name 
 
@@ -114,6 +152,6 @@ h4,_ = P4.legend_elements()
 h5,_ = P5.legend_elements()
 
 ax.legend([h1[0], h2[0], h3[0], h4[0], h5[0]], ['Shapiro range', 'sin(i)','Einstein delay','Period dot',
-           'omega dot']
-)  
+           'omega dot'])
+
 plt.show()
