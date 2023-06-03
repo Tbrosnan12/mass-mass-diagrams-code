@@ -43,7 +43,8 @@ def Find(param,n):       # fucntion that searches listed file for value of param
                          if is_number(l[i]):
                            return float(l[i])
                          else: return l[i]
-        return 0
+        print('Could not find  ' + param)
+        return 0 
     
 # pulling parameters from file , first element is the value and second is the error
 
