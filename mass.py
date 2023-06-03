@@ -101,19 +101,19 @@ yrange = arange(0.01, 3.0, delta)
 mp, mc = meshgrid(xrange,yrange)
 
 
-'''
+
 Mp=[]
 Mc=[]
 S=[]
 R=[]
 for i in np.arange(0.01,3,0.01):
  Mp.append(i)
- Mc.append(1)
+ Mc.append(Pdot)
  S.append(w_dot(i,1))       #stuff for debugging
  R.append(P_dot(i,1))
-plt.plot(Mp,S)
 plt.figure()
-plt.plot(Mp,R)'''
+plt.plot(Mp,R)
+plt.plot(Mp,Mc)
 
 fig, ax = plt.subplots()       
 plt.xlim(0,3)
