@@ -101,7 +101,7 @@ yrange = arange(0.01, 3.0, delta)
 mp, mc = meshgrid(xrange,yrange)
 
 
-
+'''
 Mp=[]
 Mc=[]
 S=[]
@@ -114,6 +114,7 @@ for i in np.arange(0.01,3,0.01):
 plt.figure()
 plt.plot(Mp,R)
 plt.plot(Mp,Mc)
+'''
 
 fig, ax = plt.subplots()       
 plt.xlim(0,3)
@@ -129,11 +130,13 @@ plt.ylabel("Companion mass")
 if r[1]!= 0:
  P1=ax.contourf(mp, mc, r_(mp,mc)-r[0], [-r[1],r[1]],colors='orange',alpha=0.5)
 else:
-    P1=ax.contour(mp, mc, r_(mp,mc)-r[0], [0],colors='orange',alpha=0.5)
+    P1=ax.contour(mp, mc, r_(mp,mc)-r[0], [0],colors='orange',alpha=0.5)    
 if s[1] != 0:
  P2=ax.contourf(mp, mc, s_(mp,mc)-s[0], [-s[1],s[1]],colors='green',alpha=0.5)
+ P6=ax.contourf(mp, mc, s_(mp,mc)-s[0], [1,100],colors='grey',alpha=0.5)
 else:
     P2=ax.contour(mp, mc, s_(mp,mc)-s[0], [0],colors='green',alpha=0.5)
+    P6=ax.contourf(mp, mc, s_(mp,mc)-s[0], [1,100],colors='grey',alpha=0.5)
 if gamma[1] != 0:
  P3=ax.contourf(mp, mc, gamma_(mp,mc)-gamma[0], [-gamma[1],gamma[1]],colors='purple',alpha=0.5)   
 else:
@@ -147,7 +150,6 @@ if wdot[1] != 0:
 else:
     P5=ax.contour(mp, mc, w_dot(mp,mc)-wdot[0], [0],colors='red',alpha=0.5)
 
-
 plt.title('Mass-mass diagram for ' + Find('PSRJ',1))    #title with pulsar name 
 
 h1,_ = P1.legend_elements()
@@ -155,8 +157,9 @@ h2,_ = P2.legend_elements()
 h3,_ = P3.legend_elements()
 h4,_ = P4.legend_elements()
 h5,_ = P5.legend_elements()
+h6,_ = P6.legend_elements()
 
-ax.legend([h1[0], h2[0], h3[0], h4[0], h5[0]], ['Shapiro range', 'sin(i)','Einstein delay','Period dot',
-           'omega dot'])
+ax.legend([h1[0], h2[0], h3[0], h4[0], h5[0], h6[0]], ['Shapiro range', 'sin(i)','Einstein delay','Period dot',
+           'omega dot', 'sin(i)>1'])
 
 plt.show()
