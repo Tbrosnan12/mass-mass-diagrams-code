@@ -133,7 +133,7 @@ else:
     P1=ax.contour(mp, mc, r_(mp,mc)-r[0], [0],colors='orange',alpha=0.5)    
 if s[1] != 0:
  P2=ax.contourf(mp, mc, s_(mp,mc)-s[0], [-s[1],s[1]],colors='green',alpha=0.5)
- P6=ax.contourf(mp, mc, s_(mp,mc)-s[0], [1,100],colors='grey',alpha=0.5)
+ P6=ax.contourf(mp, mc, s_(mp,mc)-s[0], [1,1000],colors='grey',alpha=0.5)             # extra plot here is for when the sin(i)>1
 else:
     P2=ax.contour(mp, mc, s_(mp,mc)-s[0], [0],colors='green',alpha=0.5)
     P6=ax.contourf(mp, mc, s_(mp,mc)-s[0], [1,100],colors='grey',alpha=0.5)
